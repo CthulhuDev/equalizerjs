@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Test for equalizer</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="dist/equalizer.css">
+  <style>
+    /* environment stuff for testing */
+    body, html {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+    }
+
+    .myApp {
+      width: 100%;
+      height: 100vh;
+      background: #0c0c0c;
+    }
+  </style>
+</head>
+<body>
+  <div class="myApp">
+    <div class="theThing"></div>
+  </div>
+  <script src="dist/equalizer.bundle.js"></script>
+  <script>
+    var element = document.querySelector('.theThing')
+    var Equ1 = new Equalizer(element, {
+      locked: false,
+      "values": [
+        {
+          "label": "test_1",
+          "defaultPosition": 50
+        },
+        {
+          "label": "test_2",
+          "defaultPosition": 33
+        },
+        {
+          "label": "test_3",
+          "defaultPosition": 33
+        }
+      ],
+      linearGradient: {
+        id: 'strange-blue-gradient',
+        stops: [
+          {
+            offset: '0%',
+            stopColor: '#01e6fd',
+            stopOpacity: '1'
+          },
+          {
+            offset: '100%',
+            stopColor: '#016798',
+            stopOpacity: '1'
+          }
+        ]
+      }
+    })
+  </script>
+</body>
+</html>
