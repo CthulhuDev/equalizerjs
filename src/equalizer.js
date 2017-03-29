@@ -14,6 +14,7 @@ class Equalizer {
       "rangeSlidersClass": "range__slider",
       "svgClass": "svg",
       "lineClass": "line",
+      "animationDuration": 1,
       "linearGradient": undefined,
       "values": [
         {
@@ -156,6 +157,7 @@ class Equalizer {
 
   /* init events */
   initEvents () {
+    let duration = this.getProps().animationDuration
     // animating for the first time
     let tl = new TimelineLite({
       paused: true,
@@ -172,7 +174,7 @@ class Equalizer {
       let label = input.parentElement.querySelector('.' + this.getProps().cssPrefix + this.getProps().rangeSlidersClass + '-label')
       let value = input.value
       tl.fromTo([thumb, label],
-        0.5,
+        duration,
         {
           bottom: '50%'
         },
@@ -181,7 +183,7 @@ class Equalizer {
         },
         0
       )
-      tl.from(input, 0.5, {
+      tl.from(input, duration, {
         value: 50
       }, 0)
     }
@@ -395,4 +397,5 @@ class Equalizer {
 }
 
 export { Equalizer }
+module.exports = Equalizer
 window.Equalizer = Equalizer
