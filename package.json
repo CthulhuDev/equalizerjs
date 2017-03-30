@@ -7,6 +7,7 @@
   "author": "Matteo Rigoni",
   "license": "ISC",
   "scripts": {
+    "dev": "webpack --config webpack.config.js",
     "build": "webpack -p --config webpack.config.js"
   },
   "dependencies": {
