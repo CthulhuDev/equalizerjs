@@ -428,7 +428,7 @@ class Equalizer {
       this.updateSlider()
       this.updateThumbPosition(input)
 
-      // emitting a customEvent on the main element to notify the user something has appened to the inputs
+      // emitting a customEvent on the main element to notify the user something has happened to the inputs
       let inputChangedEvent = new CustomEvent('equalizer-change', {'input' : input })
       this.element.dispatchEvent(inputChangedEvent)
     }
@@ -542,6 +542,6 @@ class Equalizer {
   }
 }
 
-export { Equalizer }
+export default { Equalizer }
 module.exports = Equalizer
 window.Equalizer = Equalizer
