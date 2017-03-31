@@ -541,3 +541,4 @@ export default class Equalizer {
     this.reInit()
   }
 }
+

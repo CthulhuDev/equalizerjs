@@ -43,7 +43,7 @@ module.exports = {
         loader: 'babel-loader',
         query: {
           plugins: ['lodash'],
-          presets: ['env']
+          presets: ['es2015']
         }
       }
     ]
