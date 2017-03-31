@@ -11,7 +11,7 @@ const extractSass = new ExtractTextPlugin({
 module.exports = {
   context: path.resolve(__dirname, './src'),
   entry: {
-    app: ['./equalizer.scss','./equalizer.js']
+    app: ['./equalizer.scss','./index.js']
   },
   output: {
     path: path.resolve(__dirname, './dist'),

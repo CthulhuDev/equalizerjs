@@ -541,5 +541,3 @@ export default class Equalizer {
     this.reInit()
   }
 }
-
-module.exports = Equalizer
