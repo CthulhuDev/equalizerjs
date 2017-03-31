@@ -1,8 +1,8 @@
 {
   "name": "equalizerjs",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Equalizer plugin for Sky Digital Hub v2",
-  "main": "./dist/equalizer.bundle.js",
+  "main": "./src/equalizer.js",
   "style": "./dist/equalizer.css",
   "author": "Matteo Rigoni",
   "license": "ISC",
