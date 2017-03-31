@@ -16,6 +16,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: 'equalizer.bundle.js',
+    library: 'equalizerjs',
+    libraryTarget: 'umd'
 
   },
   module: {
