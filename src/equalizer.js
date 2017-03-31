@@ -3,7 +3,7 @@ import { TimelineLite, TweenLite } from 'gsap'
 
 // Setting up the app container, its methods and its constants
 // main module
-class Equalizer {
+export default class Equalizer {
 
   /**
    * Implements a polyfill for String.prototype.format
@@ -542,6 +542,5 @@ class Equalizer {
   }
 }
 
-export default { Equalizer }
 module.exports = Equalizer
 window.Equalizer = Equalizer
