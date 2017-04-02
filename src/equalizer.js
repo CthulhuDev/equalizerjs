@@ -476,6 +476,8 @@ export default class Equalizer {
     // linear gradient tag
     let linearGradientEl = document.createElementNS(NS, 'linearGradient')
     linearGradientEl.setAttribute('id', lg.id)
+    // fixing straight line not showing gradient cause of element svg boxing
+    linearGradientEl.setAttribute('gradientUnits', 'userSpaceOnUse')
     // setting up stops
     for (let stop of lg.stops) {
       let stopEl = document.createElementNS(NS, 'stop')
@@ -490,14 +492,7 @@ export default class Equalizer {
     this.svg.insertBefore(defs, this.svgPath)
 
     // chrome gives problems with gradient and straight paths, so if all values are === then we won't set any gradient
-    if (this._inputs.every((element, index, array) => {
-      if (index !== (array.length - 1)) return element.value === array[index + 1].value
-      else return true
-    })) {
-      this.svgPath.setAttribute('style', '')
-    } else {
-      this.svgPath.setAttribute('style', 'stroke: url(#{0})'.format(lg.id))
-    }
+    this.svgPath.setAttribute('style', 'stroke: url(#{0})'.format(lg.id))
   }
 
   /**
