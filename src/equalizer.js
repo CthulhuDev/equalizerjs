@@ -510,8 +510,6 @@ export default class Equalizer {
     let i = 0
     for (let stopElement of stopsElement) {
       if (typeof stops[i] !== 'undefined') {
-        console.log(i, "index")
-        console.log(stops[i], "stops[i]")
         TweenLite.to(stopElement, duration, { attr: { 'stop-color': stops[i] } })
       }
       i+=1
