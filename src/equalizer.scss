@@ -142,15 +142,15 @@ $border-radius: 10px;
     .#{$rangeSelector}-label {
       opacity: 1;
       position: absolute;
-      left: 0;
-      right: 0;
+      left: 50%;
       margin: auto;
       color: white;
       text-align: center;
       pointer-events: none;
       cursor: pointer;
-      transform: translateY(-($slider-thumb-size * 4));
+      transform: translateX(-50%) translateY(-($slider-thumb-size * 4));
       transition: color 0.2s ease-out;
+      white-space: nowrap;
       z-index: 10;
     }
     .#{$rangeSelector}-thumb {
