@@ -245,11 +245,6 @@ export default class Equalizer {
     // creating an input for each value defined in props
     for (let value of this.getProps().values) {
       let node =  this.createSingleInput()
-      // eventually adding a class to the input, if defined in the single value config
-      if (typeof value.specialClass !== 'undefined') {
-        // no prefixing on this
-        node.classList.add(value.specialClass)
-      }
 
       // checking that the value is a valid value
       let finalValue = (value.defaultPosition >= 0 && value.defaultPosition <= 100) ? value.defaultPosition : 50
@@ -274,6 +269,12 @@ export default class Equalizer {
 
       // appending input to the container
       this.inputsContainer.appendChild(inputParent)
+
+      // eventually adding a class to the input, if defined in the single value config
+      if (typeof value.specialClass !== 'undefined' && value.specialClass !== '') {
+        // no prefixing on this
+        node.classList.add(value.specialClass)
+      }
 
       // updating arrays
       this._inputs.push(node)
@@ -562,3 +563,5 @@ export default class Equalizer {
     this.reInit()
   }
 }
+
+window.Equalizer = Equalizer
