@@ -5,6 +5,9 @@ const extractSass = new ExtractTextPlugin({
   filename: "equalizer.css",
   disable: process.env.NODE_ENV === "development"
 });
+const gsapProvider = new webpack.ProvidePlugin({
+  TweenMax: "gsap"
+});
 
 
 
@@ -51,6 +54,16 @@ module.exports = {
     ]
   },
   plugins: [
-    extractSass
-  ]
+    extractSass,
+    gsapProvider
+  ],
+  resolve: {
+    extensions: [".js"],
+    alias: {
+      "TweenMax": "gsap",
+      "TweenLite": "gsap",
+      "TimelineLite": "gsap",
+      "CSSPlugin": "gsap"
+    }
+  }
 };

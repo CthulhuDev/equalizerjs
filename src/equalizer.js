@@ -1,5 +1,6 @@
 import _ from 'lodash'
-import { TimelineLite, TweenLite } from 'gsap'
+
+// TweenLite and TimelineLite are automagically imported with gsap.
 
 // Setting up the app container, its methods and its constants
 // main module
@@ -541,5 +542,3 @@ export default class Equalizer {
     this.reInit()
   }
 }
-
-export var __useDefault = true
