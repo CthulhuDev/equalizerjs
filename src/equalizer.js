@@ -52,11 +52,13 @@ export default class Equalizer {
       "values": [
         {
           "label": "test_1",
-          "defaultPosition": 50
+          "defaultPosition": 50,
+          "specialClass": ''
         },
         {
           "label": "test_2",
-          "defaultPosition": 33
+          "defaultPosition": 33,
+          "specialClass": ''
         }
       ],
       "aspectRatio" : "3",
@@ -243,6 +245,11 @@ export default class Equalizer {
     // creating an input for each value defined in props
     for (let value of this.getProps().values) {
       let node =  this.createSingleInput()
+      // eventually adding a class to the input, if defined in the single value config
+      if (typeof value.specialClass !== 'undefined') {
+        // no prefixing on this
+        node.classList.add(value.specialClass)
+      }
 
       // checking that the value is a valid value
       let finalValue = (value.defaultPosition >= 0 && value.defaultPosition <= 100) ? value.defaultPosition : 50
@@ -430,7 +437,11 @@ export default class Equalizer {
       this.updateThumbPosition(input)
 
       // emitting a customEvent on the main element to notify the user something has happened to the inputs
-      let inputChangedEvent = new CustomEvent('equalizer-change', {'input' : input })
+      let inputChangedEvent = new CustomEvent('equalizer-change', {
+        detail: {
+          'input' : input
+        }
+      })
       this.element.dispatchEvent(inputChangedEvent)
     }
   }
@@ -476,7 +487,16 @@ export default class Equalizer {
     // appending linear gradient to SVG and making use of it
     defs.appendChild(linearGradientEl)
     this.svg.insertBefore(defs, this.svgPath)
-    this.svgPath.setAttribute('style', 'stroke: url(#{0})'.format(lg.id))
+
+    // chrome gives problems with gradient and straight paths, so if all values are === then we won't set any gradient
+    if (this._inputs.every((element, index, array) => {
+      if (index !== (array.length - 1)) return element.value === array[index + 1].value
+      else return true
+    })) {
+      this.svgPath.setAttribute('style', '')
+    } else {
+      this.svgPath.setAttribute('style', 'stroke: url(#{0})'.format(lg.id))
+    }
   }
 
   /**
