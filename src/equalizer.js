@@ -326,6 +326,9 @@ export default class Equalizer {
       let prevPoint = (parseInt(idx) === 0) ? { x: 0, y: this.getProps().startingPointY } : this.getThumbCoordinates(idx - 1)
       let point = (parseInt(idx) === inputs.length - 1) ? input : this.getThumbCoordinates(idx)
       let middlePoint = (point.x + prevPoint.x) / 2
+      console.log(point, 'point')
+      console.log(prevPoint, 'prevPoint')
+      console.log(middlePoint, 'middlePoint')
       // let's assume, for now, that the control points are simply half way and straight
       let curve = "C {0},{1} {2},{3} {4},{5} ".format(
         middlePoint, prevPoint.y,
