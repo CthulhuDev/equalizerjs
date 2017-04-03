@@ -137,7 +137,7 @@ export default class Equalizer {
     let containerBB = this.container.getBoundingClientRect()
     let thumbBB = this._thumbs[idx].getBoundingClientRect()
 
-    let thumbCenter = Math.abs(thumbBB.left + (thumbBB.width / 2))
+    let thumbCenter = thumbBB.left + (thumbBB.width / 2)
 
     let x = (((thumbCenter - containerBB.left) * 100) / containerBB.width) * ar
     let y = 100 - this._inputs[idx].value
