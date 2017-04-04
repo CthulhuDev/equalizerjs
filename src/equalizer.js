@@ -416,7 +416,7 @@ export default class Equalizer {
   /**
    * throttled resize function
    */
-  resize () {
+  resizeFunction () {
     if (this.waitingFrame) return
 
     this.waitingFrame = true
