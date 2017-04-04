@@ -198,11 +198,7 @@ $border-radius: 10px;
 
       }
     }
-    .#{$rangeSelector}-container:hover .#{$rangeSelector}-thumb,
-    .#{$rangeSelector}-container:focus + .#{$rangeSelector}-thumb,
-    .#{$rangeSelector}[orient="vertical"]:hover + .#{$rangeSelector}-thumb,
-    .#{$rangeSelector}[orient="vertical"]:focus + .#{$rangeSelector}-thumb,
-    .#{$rangeSelector}-thumb:hover {
+    .#{$rangeSelector}-container:hover .#{$rangeSelector}-thumb {
       width: $slider-thumb-size  * 6;
       height: $slider-thumb-size  * 6;
 
@@ -211,13 +207,14 @@ $border-radius: 10px;
         transition: opacity 0.2s 0.3s ease-out;;
       }
     }
-    .#{$rangeSelector}-container:hover .#{$rangeSelector}-label,
-    .#{$rangeSelector}-container:focus + .#{$rangeSelector}-label,
-    .#{$rangeSelector}[orient="vertical"]:hover + .#{$rangeSelector}-thumb + .#{$rangeSelector}-label,
-    .#{$rangeSelector}[orient="vertical"]:focus + .#{$rangeSelector}-thumb + .#{$rangeSelector}-label,
-    .#{$rangeSelector}-label:hover {
-      color: $color-theme;
-    }
+    // Example Hover label behaviour
+    //.#{$rangeSelector}-container:hover .#{$rangeSelector}-label,
+    //.#{$rangeSelector}-container:focus + .#{$rangeSelector}-label,
+    //.#{$rangeSelector}[orient="vertical"]:hover + .#{$rangeSelector}-thumb + .#{$rangeSelector}-label,
+    //.#{$rangeSelector}[orient="vertical"]:focus + .#{$rangeSelector}-thumb + .#{$rangeSelector}-label,
+    //.#{$rangeSelector}-label:hover {
+    //  color: $color-theme;
+    //}
   }
 
   .#{$svgSelector} {
