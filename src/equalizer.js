@@ -371,7 +371,9 @@ export default class Equalizer {
    */
   initEvents () {
     this.animateCurveToPositionAndAbilitateThumbs()
+    this.resizeEqualizer()
   }
+
 
   /**
    * This function tweens the values and the curve to its initial position
@@ -401,6 +403,27 @@ export default class Equalizer {
     }
 
     tl.play()
+  }
+
+  /**
+   * Stuff that has to be done on window.resize
+   */
+  resizeEqualizer () {
+    this.waitingFrame = false
+    window.addEventListener('resize', this.resizeFunction.bind(this))
+  }
+
+  /**
+   * throttled resize function
+   */
+  resize () {
+    if (this.waitingFrame) return
+
+    this.waitingFrame = true
+    requestAnimationFrame(() => {
+      this.updateSlider()
+      this.waitingFrame = false
+    })
   }
 
   // TODO: create callbacks to place inside the configuration object
