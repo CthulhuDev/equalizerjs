@@ -261,6 +261,11 @@ export default class Equalizer {
       this.setClass(thumb, this.getProps().rangeSlidersClass + '-thumb')
       inputParent.appendChild(thumb)
 
+      // adding a fake track for the slider --- fixed firefox z-index madness (thumb and track can't have different z-indexes on ffox, so we also create a new track)
+      let track = document.createElement('div')
+      this.setClass(track, this.getProps().rangeSlidersClass + '-track')
+      inputParent.appendChild(track)
+
       // adding a label next to the thumb
       let label = document.createElement('div')
       this.setClass(label, this.getProps().rangeSlidersClass + '-label')
