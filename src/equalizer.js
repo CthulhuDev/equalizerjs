@@ -22,9 +22,33 @@ export default class Equalizer {
   }
 
   /**
+   * IE11 and Edge require some custom CSS, especially on line thickness. Use this function to add a class to the SVG
+   */
+  checkIfIEOrEdge () {
+    let isIEOrEdge = false
+    if (/MSIE 10/i.test(navigator.userAgent)) {
+      // This is internet explorer 10
+      isIEOrEdge = true;
+    }
+
+    if (/MSIE 9/i.test(navigator.userAgent) || /rv:11.0/i.test(navigator.userAgent)) {
+      // This is internet explorer 9 or 11
+      isIEOrEdge = true;
+    }
+
+    if (/Edge\/\d./i.test(navigator.userAgent)){
+      // This is Microsoft Edge
+      isIEOrEdge = true;
+    }
+    return isIEOrEdge
+  }
+
+  /**
    * Initializing default properties, which will then be merged with the one given inside the constructor
    */
   initDefaultProps () {
+
+
     // properties and defaults
     this._defaultProps = ({
       "cssPrefix": "equalizer__",
@@ -220,6 +244,9 @@ export default class Equalizer {
     svg.setAttributeNS(null, 'width', width + 'px')
     svg.setAttributeNS(null, 'height', height + 'px')
     svg.setAttributeNS(null, 'viewBox', '0 0 ' + width + ' ' + height)
+    if(this.checkIfIEOrEdge()){
+      this.setClass(svg, '__svg__is__ms')
+    }
     this.setClass(svg, this.getProps().svgClass)
 
     // creating the path
@@ -564,12 +591,12 @@ export default class Equalizer {
     this.initEvents()
 
     // dispatching event
-    this.element.dispatchEvent(new Event('equalizer-init'))
+    this.element.dispatchEvent(new window.CustomEvent('equalizer-init'))
   }
 
   // init tha thing
   constructor (element, props = undefined) {
-    // setupping string format polyfill
+    // setting up string format polyfill
     Equalizer.formatPolyfill()
 
     this.initDefaultProps()
