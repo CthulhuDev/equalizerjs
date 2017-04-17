@@ -14,7 +14,7 @@ const gsapProvider = new webpack.ProvidePlugin({
 module.exports = {
   context: path.resolve(__dirname, './src'),
   entry: {
-    app: ['babel-polyfill','./equalizer.scss','./index.js']
+    app: ['./equalizer.scss','./index.js']
   },
   output: {
     path: path.resolve(__dirname, './dist'),
