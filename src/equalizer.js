@@ -562,7 +562,7 @@ export default class Equalizer {
     this.initDOM()
 
     this.initEvents()
-
+    console.log('here ', this.element)
     // dispatching event
     this.element.dispatchEvent(new Event('equalizer-init'))
   }
