@@ -250,6 +250,11 @@ $border-radius: 10px;
       stroke: $color-theme;
       stroke-width: 3px;
     }
+    &.#{$prefix + 'is__ms'} {
+      .#{$lineSelector} {
+        stroke-width: 1px;
+      }
+    }
   }
 }
 

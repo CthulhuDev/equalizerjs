@@ -245,7 +245,7 @@ export default class Equalizer {
     svg.setAttributeNS(null, 'height', height + 'px')
     svg.setAttributeNS(null, 'viewBox', '0 0 ' + width + ' ' + height)
     if(this.checkIfIEOrEdge()){
-      this.setClass(svg, '__svg__is__ms')
+      this.setClass(svg, 'is__ms')
     }
     this.setClass(svg, this.getProps().svgClass)
 

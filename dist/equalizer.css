@@ -538,3 +538,5 @@ template {
     .equalizer__el .equalizer__svg .equalizer__line {
       stroke: #737373;
       stroke-width: 3px; }
+    .equalizer__el .equalizer__svg.equalizer__is__ms .equalizer__line {
+      stroke-width: 1px; }
