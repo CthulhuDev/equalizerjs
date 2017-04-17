@@ -25,6 +25,7 @@ export default class Equalizer {
    * Initializing default properties, which will then be merged with the one given inside the constructor
    */
   initDefaultProps () {
+    console.log('here1', this.element)
     // properties and defaults
     this._defaultProps = ({
       "cssPrefix": "equalizer__",
@@ -73,6 +74,7 @@ export default class Equalizer {
    * inside the application.
    */
   initAppVars () {
+    console.log('here2', this.element)
     // svg namespace
     this._svgNS = 'http://www.w3.org/2000/svg'
 
@@ -157,6 +159,7 @@ export default class Equalizer {
    *  - An eventual gradient of the path
    */
   initDOM () {
+    console.log('here3', this.element)
     // setting up a general container, in case we need some css magic
     this.container = this.initContainer()
     // setting up a general container for the inputs, to correctly instantiate the flexbox
@@ -185,6 +188,7 @@ export default class Equalizer {
    * @returns {Element}
    */
   initContainer () {
+    console.log('here4', this.element)
     let container = document.createElement('div')
     this.setClass(container, 'container')
     return container
@@ -208,6 +212,7 @@ export default class Equalizer {
    * svg, svgPath
    */
   createSVG () {
+    console.log('here6', this.element)
     let ar = this.getProps().aspectRatio
     let NS = this._svgNS
     let svg = document.createElementNS(NS, 'svg')
@@ -375,6 +380,7 @@ export default class Equalizer {
    * Setting up all the events
    */
   initEvents () {
+    console.log('here7', this.element)
     this.animateCurveToPositionAndAbilitateThumbs()
     this.resizeEqualizer()
   }
@@ -551,6 +557,7 @@ export default class Equalizer {
    * It dispatches an event on init done
    */
   reInit () {
+    console.log('here', this.element)
     // setting element class
     this.setClass(this.element, this.getProps().mainElementClass)
     this.setClass(this.element, this.getProps().additionalClass)
@@ -569,7 +576,7 @@ export default class Equalizer {
 
   // init tha thing
   constructor (element, props = undefined) {
-    // setupping string format polyfill
+    // setting up string format polyfill
     Equalizer.formatPolyfill()
 
     this.initDefaultProps()
