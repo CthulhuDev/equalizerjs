@@ -296,7 +296,7 @@ export default class Equalizer {
       // adding a label next to the thumb
       let label = document.createElement('div')
       this.setClass(label, this.getProps().rangeSlidersClass + '-label')
-      label.innerText = value.label
+      label.innerHTML = value.label
       inputParent.appendChild(label)
 
       // appending input to the container
