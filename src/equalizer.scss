@@ -44,6 +44,15 @@ $border-radius: 10px;
   width: $slider-thumb-size*4;
   height: $slider-thumb-size*4;
   cursor: pointer;
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+
+  &:active {
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+  }
   opacity: 0; // Hide the native styling
 }
 
