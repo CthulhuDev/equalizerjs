@@ -414,12 +414,20 @@ export default class Equalizer {
   animateCurveToPositionAndAbilitateThumbs () {
     // TODO: documentate this parameter
     let duration = this.getProps().animationDuration
+
+    // locking up the clicks while the animation is running TODO: trigger an event
+    this.element.parentNode.classList.add('locked')
+
     // animating for the first time
     let tl = new TimelineLite({
       paused: true,
       onComplete: () => {
         // setting up events for thumbs
         this.initThumbsEvents()
+        // unlocking the element
+        this.element.parentNode.classList.remove('locked')
+        // triggering a last update
+        this.updateSlider()
       },
       onUpdate: () => {
         this.updateSlider()
