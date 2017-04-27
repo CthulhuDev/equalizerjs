@@ -579,6 +579,19 @@ export default class Equalizer {
     }
   }
 
+  /**
+   * Changes svg linearGradient stops opacity to be the one given
+   * @param opacity
+   */
+  changeCurveOpacity (opacity) {
+    let duration = this.getProps().animationDuration
+    let stopsElement = this.svg.querySelectorAll('defs linearGradient stop')
+
+    for (let stopElement of stopsElement) {
+      TweenLite.to(stopElement, duration, { attr: { 'stop-opacity': opacity } })
+    }
+  }
+
   /* Constructor and initialization methods */
 
   /**
