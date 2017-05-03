@@ -416,6 +416,7 @@ export default class Equalizer {
     let duration = this.getProps().animationDuration
 
     // locking up the clicks while the animation is running TODO: trigger an event
+    // TODO: delegate application locking status to a function
     this.element.parentNode.classList.add('locked')
 
     // animating for the first time
@@ -440,6 +441,59 @@ export default class Equalizer {
       let value = input.value
       tl.fromTo([thumb, label], duration, { bottom: '50%' }, { bottom: value + '%' }, 0)
       tl.from(input, duration, { value: 50 }, 0)
+    }
+
+    tl.play()
+  }
+
+
+  /**
+   * This function is meant to be called from the outside
+   * It animates the curve to a certain position, given that the values parameter is an array
+   *
+   * Only the matching array positions gets accounted
+   *
+   * @param {Array} values - array with values
+   */
+  animateCurveToPosition ( values = undefined ) {
+    // TODO: error checking and exception throwing
+    if (typeof values === 'undefined') {
+      return
+    }
+
+    let duration = this.getProps().animationDuration
+
+    // locking up the clicks while the animation is running TODO: trigger an event
+    this.element.parentNode.classList.add('locked')
+
+    // setting up the timeline
+    let tl = new TimelineLite({
+      paused: true,
+      onComplete: () => {
+        // unlocking the element
+        this.element.parentNode.classList.remove('locked')
+        // triggering a last update
+        this.updateSlider()
+      },
+      onUpdate: () => {
+        this.updateSlider()
+      }
+    })
+
+    for (let inputIndex in this._inputs) {
+      // if the array of values is partial, break
+      if (typeof values[inputIndex] === 'undefined') {
+        break
+      }
+
+      let input = this._inputs[inputIndex]
+
+      let thumb = input.parentElement.querySelector('.' + this.getProps().cssPrefix + this.getProps().rangeSlidersClass + '-thumb')
+      let label = input.parentElement.querySelector('.' + this.getProps().cssPrefix + this.getProps().rangeSlidersClass + '-label')
+      let value = input.value
+      let newValue = values[inputIndex]
+      tl.fromTo([thumb, label], duration, { bottom: value + '%' }, { bottom: newValue + '%' }, 0)
+      tl.fromTo(input, duration, { value: value }, { value: newValue }, 0)
     }
 
     tl.play()
@@ -495,6 +549,11 @@ export default class Equalizer {
    * @param e event
    */
   inputChangeCallback (e) {
+    // if the application is in locked state then we don't do anything
+    if (this.isLocked()) {
+      return false
+    }
+
     let input = e.target
     if (typeof input !== 'undefined') {
       this.updateSlider()

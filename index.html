@@ -98,9 +98,13 @@
       }
     })
 
-   /* window.setTimeout(() => {
-      Equ1.changeGradient(['#f00', '#00f'])
-    }, 5000)*/
+   window.setTimeout(() => {
+      Equ1.animateCurveToPosition([30,20,10])
+    }, 5000)
+
+    window.setTimeout(() => {
+      Equ1.animateCurveToPosition([30,20,10, 40, 50, 70, 90, 100, 110, 120])
+    }, 10000)
   </script>
 </body>
 </html>
