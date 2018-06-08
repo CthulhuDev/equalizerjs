@@ -296,7 +296,13 @@ export default class Equalizer {
       // adding a label next to the thumb
       let label = document.createElement('div')
       this.setClass(label, this.getProps().rangeSlidersClass + '-label')
-      label.innerHTML = value.label
+      // adding an inner-div to contain the text of the label. It can be useful for some css tricks that requires to have
+      // an additional wrapper
+      let labelInner = document.createElement('div')
+      this.setClass(labelInner, this.getProps().rangeSlidersClass + '-label-inner-text')
+      labelInner.innerHTML = value.label
+
+      label.appendChild(labelInner)
       inputParent.appendChild(label)
 
       // appending input to the container
