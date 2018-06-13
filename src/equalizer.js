@@ -480,6 +480,7 @@ export default class Equalizer {
         this.element.parentNode.classList.remove('locked')
         // triggering a last update
         this.updateSlider()
+        this.element.dispatchEvent(new CustomEvent('animated-to-position'))
       },
       onUpdate: () => {
         this.updateSlider()
