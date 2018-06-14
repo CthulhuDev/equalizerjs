@@ -1,6 +1,6 @@
 {
   "name": "equalizerjs",
-  "version": "1.7.2",
+  "version": "1.7.3",
   "description": "Equalizer plugin for Sky Digital Hub v2",
   "main": "./dist/equalizer.bundle.js",
   "style": "./dist/equalizer.css",

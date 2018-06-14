@@ -108,13 +108,14 @@ $border-radius: 10px;
       -webkit-appearance: slider-vertical;  // webkit
       // hiding original style
       opacity: 0;
-      width: $slider-thumb-size*4;;
+      width: $slider-thumb-size*4;
+      margin: 0;
 
       // I'm setting it to be slightly bigger than the parent
       // So if the user (especially on firefox) is click slightly out of it
       // can still perform the action on the input slider correctly
-      top: -2%;
-      height: 104%;
+      top: -3%;
+      height: 106%;
 
       // reminder: input z-index is 10, fake-track is 0 and fake-thumb is 5
       z-index: 10;
