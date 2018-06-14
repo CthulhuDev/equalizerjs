@@ -1,6 +1,6 @@
 {
   "name": "equalizerjs",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "description": "Equalizer plugin for Sky Digital Hub v2",
   "main": "./dist/equalizer.bundle.js",
   "style": "./dist/equalizer.css",
@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "gsap": "^1.19.1",
-    "normalize.css": "^6.0.0"
+    "normalize-scss": "^7.0.1"
   },
   "devDependencies": {
     "babel-core": "^6.24.0",
