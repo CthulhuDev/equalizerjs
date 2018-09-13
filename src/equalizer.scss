@@ -220,6 +220,14 @@ $border-radius: 10px;
         transform: translate(-50%, -50%) rotate(45deg) translate(-2px, -2px);
 
       }
+
+      // thumb inner label, will contain the current value of the thumb's input
+      .#{$rangeSelector}-thumb-inner-label {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
     }
 
     .#{$rangeSelector}-track {

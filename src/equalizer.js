@@ -288,6 +288,11 @@ export default class Equalizer {
       this.setClass(thumb, this.getProps().rangeSlidersClass + '-thumb')
       inputParent.appendChild(thumb)
 
+      // adding a label inside the tumb, we will insert the current value there
+      let thumbInnerLabel = document.createElement('div')
+      this.setClass(thumbInnerLabel, this.getProps().rangeSlidersClass + '-thumb-inner-label')
+      thumb.appendChild(thumbInnerLabel)
+
       // adding a fake track for the slider --- fixed firefox z-index madness (thumb and track can't have different z-indexes on ffox, so we also create a new track)
       let track = document.createElement('div')
       this.setClass(track, this.getProps().rangeSlidersClass + '-track')
@@ -387,6 +392,10 @@ export default class Equalizer {
     let value = input.value
     thumb.style.bottom = value + '%'
     label.style.bottom = value + '%'
+
+    // adding current value inside the thumb inner label
+    let thumbInnerLabel = thumb.querySelector('.' + this.getProps().cssPrefix + this.getProps().rangeSlidersClass + '-thumb-inner-label')
+    thumbInnerLabel.innerHTML = Math.round(value/10)
   }
 
   /* reInit functions */
